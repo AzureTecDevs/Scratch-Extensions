@@ -1,20 +1,32 @@
-class StrictEqualityExtension {
+class StrExtension {
   getInfo() {
     return {
-      id: 'strictequalityexample',
-      name: 'Strict Equality',
+      id: 'strext',
+      name: 'More Blocks',
       blocks: [
         {
-          opcode: 'strictlyEquals',
+          opcode: 'exactlyEquals',
           blockType: Scratch.BlockType.BOOLEAN,
-          text: '[ONE] strictly equals [TWO]',
+          text: '[ONE] exactly equals [TWO]',
           arguments: {
             ONE: {
-              type: Scratch.ArgumentType.STRING
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'a'
             },
             TWO: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: 'Second value'
+              defaultValue: 'A'
+            }
+          }
+        },
+        {
+          opcode: 'log',
+          blockType: Scratch.BlockType.COMMAND,
+          text: 'Log [TEXT] to console',
+          arguments: {
+            TEXT: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'Hello World!'
             }
           }
         }
@@ -22,8 +34,12 @@ class StrictEqualityExtension {
     };
   }
 
-  strictlyEquals(args) {
+  exactlyEquals(args) {
     return args.ONE === args.TWO;
   }
+  log(args) {
+    console.log(args.ONE)
+  }
 }
-Scratch.extensions.register(new StrictEqualityExtension());
+}
+Scratch.extensions.register(new StrExtension());
