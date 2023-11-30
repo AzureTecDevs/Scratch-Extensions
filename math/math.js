@@ -36,10 +36,10 @@ class StrExtension {
 
   exactlyEquals(args) {
     return args.ONE === args.TWO;
+  };
+  log(args) {
+    console.log(args.ONE);
   }
-  //log(args) {
-  //  console.log(args.ONE)
-  //}
 }
 }
 Scratch.extensions.register(new StrExtension());
